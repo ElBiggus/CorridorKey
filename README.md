@@ -37,17 +37,30 @@ Because GVM and VideoMaMa have huge model file sizes and extreme hardware requir
 
 ### 1. Installation
 
-*I am currently developing a script to automate this setup! Until then, follow these manual steps:*
+**For Windows Users (Automated):**
+1.  Clone or download this repository to your local machine.
+2.  Ensure you have Python 3.10+ installed.
+3.  Double-click `Install_CorridorKey_Windows.bat`. This will automatically set up your python environment, install requirements, and download the CorridorKey model.
+4.  (Optional) Double-click `Install_GVM_Windows.bat` and `Install_VideoMaMa_Windows.bat` to automatically download the heavy optional Alpha Hint generators.
 
+**For Linux / Mac Users (Manual Setup):**
 1.  Clone or download this repository to your local machine.
 2.  Ensure you have Python 3.10+ installed.
 3.  Set up a virtual environment and install the requirements:
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    source venv/bin/activate # On Windows: venv\Scripts\activate
     pip install -r requirements.txt
     ```
-4.  Download the trained model checkpoint (`CorridorKey.pth`) and place it inside the `CorridorKeyModule/checkpoints/` directory.
+4.  **Download the Models:** You must manually download these open-source foundational models and place them in their exact respective folders:
+    *   **CorridorKey v1.0 Model (~3GB):** [Download CorridorKey_v1.0.pth](https://huggingface.co/nikopueringer/CorridorKey_v1.0/resolve/main/CorridorKey_v1.0.pth) 
+        *   Place inside: `CorridorKeyModule/checkpoints/` and ensure it is named exactly `CorridorKey.pth`.
+    *   **GVM Weights (Optional):** [HuggingFace: geyongtao/gvm](https://huggingface.co/geyongtao/gvm)
+        *   Install the HuggingFace CLI: `pip install -U "huggingface_hub[cli]"`
+        *   Download using the CLI: `huggingface-cli download geyongtao/gvm --local-dir gvm_core/weights`
+    *   **VideoMaMa Weights (Optional):** [HuggingFace: SammyLim/VideoMaMa](https://huggingface.co/SammyLim/VideoMaMa)
+        *   Install the HuggingFace CLI: `pip install -U "huggingface_hub[cli]"`
+        *   Download using the CLI: `huggingface-cli download SammyLim/VideoMaMa --local-dir VideoMaMaInferenceModule/checkpoints`
 
 ### 2. How it Works
 
